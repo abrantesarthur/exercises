@@ -1,0 +1,32 @@
+common characteristics of dynamic programming problems:
+    we have to make a decision
+        rod cutting problem: where to cut the rod next or whether to make a cut at a specific place or not
+        Longgest Common Subsequence: eliminate last element from X or from Y
+        matrix multiplicatoin: where to split the set
+        grid traveler: whether to go down or right
+        canSum: which number to subtract next
+    each decision usually increases the problem space
+        rod-cutting: cutting a rod transforms it into two smaller rods
+        longest common subsequence: eliminating from X or from Y yields two combinations of inputs (one in which X is smaller and another in which Y is smaller)
+        matrix multiplicatoin: splitting the set yields two sets
+        grid traveler: two options of grid from choosing to go down or right
+        canSum: each choice of number to subtract from the sum yields a new sum 
+    each decision diminishes each problem size in some sense
+        rod-cutting: the size of the rod diminishes
+        Longest Common Subsequence: size of input sequences diminishes
+        matrix multiplicatoin: size of sets diminishes
+        grid-traveler: size of grid diminishes
+        canSum: total sum diminishes
+    the solution to the problem is a combination to solution to subproblems
+        rod-cutting: it's the max between the value of not cutting and the sum of the values of each cut
+        longest common-subsequence: the max of the results 
+        matrix-multiplication: the minimum between the results 
+        grid-traveler: the sum of the results
+        canSum: the OR of the possibilities
+how to solve a dynamic programming problem:
+    decision
+        which item to pick from the list
+        whether to pick this one item or not
+        which action to take
+    how to combine so
+    lutions: sum, max, min, or
