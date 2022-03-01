@@ -21,7 +21,7 @@ function solution(matrix) {
     }
 
     // add i-border to borders
-    borders.push(iborder.slice());
+    borders.push(iborder);
   }
 
   // sort borders
