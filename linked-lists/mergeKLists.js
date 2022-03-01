@@ -153,22 +153,3 @@ const appendList = function (listOne, listTwo) {
   tail.next = listTwo;
   return listOne;
 };
-
-let list1Hd = new ListNode(0, null);
-let list1Tl = list1Hd;
-list1Tl.next = new ListNode(1, null);
-list1Tl = list1Tl.next;
-list1Tl.next = new ListNode(3, null);
-list1Tl = list1Tl.next;
-list1Tl.next = new ListNode(5, null);
-list1Tl = list1Tl.next;
-let list2Hd = new ListNode(2, null);
-let list2Tl = list2Hd;
-list2Tl.next = new ListNode(4, null);
-list2Tl = list2Tl.next;
-list2Tl.next = new ListNode(6, null);
-list2Tl = list2Tl.next;
-list2Tl.next = new ListNode(8, null);
-list2Tl = list2Tl.next;
-
-mergeKListsBruteForce([list1Hd, list2Hd]);
