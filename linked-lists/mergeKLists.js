@@ -6,7 +6,8 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 
-var mergeKListsBruteForce = function (lists) {
+// Approach 1: Brute Force
+var mergeKListsOne = function (lists) {
   // merge all lists into single list
   let nodeList = [];
   for (head of lists) {
@@ -29,8 +30,8 @@ var mergeKListsBruteForce = function (lists) {
   return nodeList[0];
 };
 
-// Approach 2: compare 1 to 1
-var mergeKListCompare = function (lists) {
+// Approach 2: compare nodes 1 to 1
+var mergeKListTwo = function (lists) {
   if (lists.length == 0) {
     return null;
   }
@@ -70,6 +71,87 @@ var mergeKListCompare = function (lists) {
   }
 
   return answerHead;
+};
+
+// Approach 4: merge lists 2 by 2
+var mergeKListFour = function (lists) {
+  if (lists.length == 0) {
+    return null;
+  }
+  if (lists.length == 1) {
+    return lists[0];
+  }
+
+  // continuously merge two lists
+  while (lists.length > 1) {
+    let tmp = mergeTwoLists(lists.pop(), lists.pop());
+    lists.unshift(tmp);
+  }
+
+  return lists[0];
+};
+
+const mergeTwoLists = function (listOne, listTwo) {
+  if (listOne == null) {
+    return listTwo;
+  }
+  if (listTwo == null) {
+    return listOne;
+  }
+
+  let head = null;
+  let tail = null;
+  let smallestHead;
+
+  while (true) {
+    if (listOne == null) {
+      // if reached end of first list, append second list to the answer
+      head = appendList(head, listTwo);
+      break;
+    } else if (listTwo == null) {
+      // if reached end of second list, append first list to the answer
+      head = appendList(head, listOne);
+      break;
+    }
+
+    // pop smallest head
+    if (listOne.val < listTwo.val) {
+      smallestHead = listOne;
+      listOne = listOne.next;
+    } else {
+      smallestHead = listTwo;
+      listTwo = listTwo.next;
+    }
+    smallestHead.next = null;
+
+    // append smallest head to answer
+    if (head == null) {
+      head = smallestHead;
+      tail = smallestHead;
+    } else {
+      tail.next = smallestHead;
+      tail = smallestHead;
+    }
+  }
+
+  return head;
+};
+
+// appendList appends listTwo to listOne
+const appendList = function (listOne, listTwo) {
+  if (listOne == null) {
+    return listTwo;
+  } else if (listTwo == null) {
+    return listOne;
+  }
+
+  // look for tail;
+  let tail = listOne;
+  while (tail.next != null) {
+    tail = tail.next;
+  }
+  tail.next = listTwo;
+  return listOne;
 };
 
 let list1Hd = new ListNode(0, null);
