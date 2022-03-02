@@ -27,6 +27,7 @@ var mergeKListsOne = function (lists) {
   }
   nodeList[nodeList.length - 1].next = null;
 
+  // return head
   return nodeList[0];
 };
 
