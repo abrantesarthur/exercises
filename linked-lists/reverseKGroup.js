@@ -5,7 +5,8 @@ function ListNode(val, next) {
   this.next = next === undefined ? null : next;
 }
 
-var reverseKGroup = function (head, k) {
+// approach 1: iterative
+var reverseKGroupOne = function (head, k) {
   if (head == null || head.next == null || k == 1) {
     return head;
   }
@@ -47,7 +48,7 @@ var reverseKGroup = function (head, k) {
     reversedNodes[i][0].next = reversedNodes[i + 1][k - 1];
   }
 
-  // link lastNodes;
+  // append lastNodes;
   if (lastNodes.length > 0) {
     reversedNodes[reversedNodes.length - 1][0].next = lastNodes[0];
   }
@@ -72,6 +73,29 @@ var getNextKNodes = function (head, k) {
   return list;
 };
 
-let n2 = new ListNode(2, null);
-let n1 = new ListNode(1, n2);
-let hd = new ListNode(0, n1);
+// Approach 2: recursive
+var reverseKGroupTwo = function (head, k) {
+  let curr = head;
+  let count = 0;
+  // get head of next group
+  while (curr != null && count != k) {
+    curr = curr.next;
+    count++;
+  }
+
+  if (count == k) {
+    // reverse next group
+    curr = reverseKGroupTwo(curr, k);
+
+    // reverse current group
+    while (count-- > 0) {
+      let tmp = head.next;
+      head.next = curr;
+      curr = head;
+      head = tmp;
+    }
+    head = curr;
+  }
+
+  return head;
+};
