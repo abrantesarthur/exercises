@@ -2,7 +2,8 @@
 
 // Add any helper functions you may need here
 
-function numberOfWays(arr, k) {
+// Approach One: Brute Force - O(n^2)
+function numberOfWaysOne(arr, k) {
   let count = 0;
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j < arr.length; j++) {
