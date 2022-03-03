@@ -35,9 +35,16 @@ const bfs = function (node) {
 let l3 = new TreeNode(5);
 let r3 = new TreeNode(6);
 let r1 = new TreeNode(2, l3, r3);
-let l2 = new TreeNode(3);
-let r2 = new TreeNode(4);
-let l1 = new TreeNode(1, l2, r2);
+let l2 = new TreeNode(5);
+let r2 = new TreeNode(8);
+let l1 = new TreeNode(4, l2, r2);
 let root = new TreeNode(0, l1, r1);
+
+//           0
+//         /   \
+//        4     2
+//       / \   / \
+//      5   8 5   6
+//
 
 bfs(root);
