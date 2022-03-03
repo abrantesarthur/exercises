@@ -19,29 +19,25 @@ function isNumeric(c) {
 
 function encrypt(c, f) {
   let ac = c.charCodeAt(0);
-  let first;
-  let last;
+  let first, last, charCount;
   if (isLowerCaseAlpha(c)) {
     last = "z".charCodeAt(0);
     first = "a".charCodeAt(0);
-    f = f % 26;
+    charCount = 26;
   } else if (isUpperCaseAlpha(c)) {
     last = "Z".charCodeAt(0);
     first = "A".charCodeAt(0);
-    f = f % 26;
+    charCount = 26;
   } else if (isNumeric(c)) {
     last = "9".charCodeAt(0);
     first = "0".charCodeAt(0);
-    f = f % 10;
+    charCount = 10;
   } else {
     return c;
   }
-
-  let of = ac + f - last;
-  if (of > 0) {
-    return String.fromCharCode(first + of - 1);
-  }
-  return String.fromCharCode(ac + f);
+  return String.fromCharCode(
+    ((ac + (f % charCount) - first) % charCount) + first
+  );
 }
 
 function rotationalCipher(input, rotationFactor) {
