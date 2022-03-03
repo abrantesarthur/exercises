@@ -30,14 +30,10 @@ const averageByDepth = function (node) {
     }
 
     if (currDepth in hashTable) {
-      let sumAndCount = hashTable[currDepth];
-      sumAndCount[0] += currNode.val;
-      sumAndCount[1] += 1;
-      hashTable[currDepth] = sumAndCount;
-      console.log(currDepth + " " + hashTable[currDepth]);
+      let [sum, count] = hashTable[currDepth];
+      hashTable[currDepth] = [(sum += currNode.val), count++];
     } else {
       hashTable[currDepth] = [currNode.val, 1];
-      console.log(currDepth + " " + hashTable[currDepth]);
     }
   }
 
