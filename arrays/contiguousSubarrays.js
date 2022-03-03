@@ -1,9 +1,30 @@
 // Add any extra import statements you may need here
 
 // Add any helper functions you may need here
-
 function countSubarrays(arr) {
-  // Write your code here
+  let output = new Array(arr.length);
+  let count;
+  for (let i = 0; i < arr.length; i++) {
+    count = 0;
+    // count previous contiguous arrays
+    for (let j = i; j >= 0; j--) {
+      if (arr[j] <= arr[i]) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    // count upcoming contiguous arrays
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[i]) {
+        count++;
+      } else {
+        break;
+      }
+    }
+    output[i] = count;
+  }
+  return output;
 }
 
 // These are the tests we use to determine if the solution is correct.
