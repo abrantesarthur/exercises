@@ -1,5 +1,3 @@
-// Add any extra import statements you may need here
-
 // Add any helper functions you may need here
 function isLowerCaseAlpha(c) {
   return (
@@ -26,28 +24,32 @@ function encrypt(c, f) {
   if (isLowerCaseAlpha(c)) {
     last = "z".charCodeAt(0);
     first = "a".charCodeAt(0);
+    f = f % 26;
   } else if (isUpperCaseAlpha(c)) {
     last = "Z".charCodeAt(0);
     first = "A".charCodeAt(0);
+    f = f % 26;
   } else if (isNumeric(c)) {
     last = "9".charCodeAt(0);
     first = "0".charCodeAt(0);
+    f = f % 10;
   } else {
     return c;
   }
 
   let of = ac + f - last;
   if (of > 0) {
-    return String.fromCharCode(first + of);
+    return String.fromCharCode(first + of - 1);
   }
   return String.fromCharCode(ac + f);
 }
 
 function rotationalCipher(input, rotationFactor) {
+  let output = "";
   for (let i = 0; i < input.length; i++) {
-    input[i] = encrypt(input[i], rotationFactor);
+    output += encrypt(input[i], rotationFactor);
   }
-  return input[i];
+  return output;
 }
 
 // These are the tests we use to determine if the solution is correct.
