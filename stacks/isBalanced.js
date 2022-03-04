@@ -1,19 +1,6 @@
 // write a function that takes a string of brackets as input
 // and returns true if the brackets are balanced
 
-const bracketsMatch = function (opening, closing) {
-  if (opening == "(" && closing == ")") {
-    return true;
-  }
-  if (opening == "{" && closing == "}") {
-    return true;
-  }
-  if (opening == "[" && closing == "]") {
-    return true;
-  }
-  return false;
-};
-
 const isBalanced = function (s) {
   if (s.length == 0) {
     return true;
