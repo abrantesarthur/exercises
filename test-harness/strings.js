@@ -1,3 +1,5 @@
+var test_case_number = 1;
+
 function check(expected, output) {
   var result = expected == output;
   var rightTick = "\u2713";

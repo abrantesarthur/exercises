@@ -1,3 +1,20 @@
+function printintegerArray(array) {
+  var size = array.length;
+  var res = "";
+  res += "[";
+  var i = 0;
+  for (i = 0; i < size; i++) {
+    if (i !== 0) {
+      res += ", ";
+    }
+    res += array[i];
+  }
+  res += "]";
+  return res;
+}
+
+var test_case_number = 1;
+
 function check(expected, output) {
   var expected_size = expected.length;
   var output_size = output.length;
