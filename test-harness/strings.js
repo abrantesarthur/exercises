@@ -1,5 +1,10 @@
 var test_case_number = 1;
 
+function printString(str) {
+  var out = '["' + str + '"]';
+  return out;
+}
+
 function check(expected, output) {
   var result = expected == output;
   var rightTick = "\u2713";
